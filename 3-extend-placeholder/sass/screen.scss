@@ -1,0 +1,51 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+
+//Mixin
+@mixin module {
+	border: 1px solid black;
+	padding: 15px;
+}
+
+@mixin error {
+	color: red;
+}
+
+//Placeholder
+%module {
+	border: 1px solid black;
+	padding: 15px;	
+}
+
+%error {
+	color: red;
+}
+
+//Extend
+/*.module {
+	border: 1px solid black;
+	padding: 15px;	
+}
+
+.error {
+	color: red;
+}*/
+
+//Placeholder use
+.article, .sidebar, footer {
+	@include module;
+	//@include error;
+	//@extend %module, %error;
+	//@extend .module, .error;
+	position: relative;
+}
+
+div {
+	@include module;
+	//@extend %module;
+	//@extend .module;
+}

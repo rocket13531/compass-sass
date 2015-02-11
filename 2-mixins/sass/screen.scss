@@ -1,0 +1,21 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+
+@mixin size($width: auto, $height: $width) {
+	width: $width;
+	height: $height;
+}
+
+.white {
+	color: white;
+}
+
+.box {
+	@extend .white;
+	@include size(100%, 250px);
+	background: red;
+}
