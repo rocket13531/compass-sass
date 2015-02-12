@@ -9,7 +9,7 @@
 	EXAMPLE 1
 */
 
-//Mixin 
+//Mixin
 @mixin hide-text {
 	text-indent: -9999px;
 	overflow: hidden;
@@ -38,7 +38,9 @@
 }
 */
 
-//Usage
+/*
+	EXAMPLE 1 USAGE
+*/
 
 .foo {
 	@include hide-text;
@@ -106,7 +108,9 @@
 	}	
 }*/
 
-//Usage
+/*
+	EXAMPLE 2 USAGE
+*/
 /*
 .foo {
 	
