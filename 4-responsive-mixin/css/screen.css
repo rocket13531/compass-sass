@@ -72,7 +72,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   color: #fff;
 }
 
-/* line 117, ../sass/screen.scss */
+/* line 119, ../sass/screen.scss */
 .foo {
   width: 300px;
   height: 300px;
@@ -80,7 +80,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   position: relative;
 }
 
-/* line 124, ../sass/screen.scss */
+/* line 126, ../sass/screen.scss */
 .bar {
   width: 100px;
   height: 100px;
@@ -90,32 +90,43 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   left: 100px;
 }
 
-/* line 133, ../sass/screen.scss */
+/* line 135, ../sass/screen.scss */
 .baz {
   width: 300px;
   height: 300px;
   background: #fff;
-  -moz-border-radius: 150px;
-  -webkit-border-radius: 150px;
-  border-radius: 150px;
+  -moz-border-radius: 300px;
+  -webkit-border-radius: 300px;
+  border-radius: 300px;
 }
-/* line 138, ../sass/screen.scss */
+/* line 140, ../sass/screen.scss */
 .baz p {
   text-align: center;
   position: relative;
   top: 142px;
 }
 
-@media (min-width: 480px) and (max-width: 992px) {
-  /* line 147, ../sass/screen.scss */
+@media (max-width: 480px) {
+  /* line 152, ../sass/screen.scss */
   .foo {
     background: red;
   }
-  /* line 149, ../sass/screen.scss */
+  /* line 154, ../sass/screen.scss */
   .foo .bar {
     background: blue;
   }
 }
-@media (min-width: 992px) and (max-width: 1200px) {
-  @contnet;
+/*
+.foo {
+	background: blue; 
+	@include breakpoint(desktop) {
+		background: red;
+	}
+	.bar {
+		background: magenta;
+		@include breakpoint(tablet-only) {
+			background: yellow;
+		}
+	}
 }
+*/

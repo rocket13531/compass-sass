@@ -50,23 +50,23 @@ $box-size-sm: 100px;
         }
 		//Only phones
         @else if $class == phone-only {
-        	@media (max-width: $screen-xs) { @contnet; }
+        	@media (max-width: $screen-xs) { @content; }
         }
         //Only tablets
         @else if $class == tablet-only {
-        	@media (min-width: $screen-md) and (max-width: $screen-lg) { @contnet; }
+        	@media (min-width: $screen-sm) and (max-width: $screen-md) { @content; }
         }
         //Only medium desktops
         @else if $class == desktop-only {
-        	@media (min-width: $screen-md) and (max-width: $screen-lg) { @contnet; }
+        	@media (min-width: $screen-md) and (max-width: $screen-lg) { @content; }
         }
         //Only large desktops
         @else if $class == lg-desktop-only {
-        	@media (min-width: $screen-lg) { @contnet; }
+        	@media (min-width: $screen-lg) { @content; }
         }
         //Tablets up through medium desktop
         @else if $class == tablet-desktop {
-            @media (min-width: $screen-md) and (max-width: $screen-lg) { @content; }
+            @media (min-width: $screen-sm) and (max-width: $screen-lg) { @content; }
         }
         //Extra small devices (phone)
         @else if $class == xs {
@@ -114,6 +114,8 @@ $box-size-sm: 100px;
 
 .foo, .bar {color: #fff;}
 
+
+//3. Lets come back and look at how we're using variables
 .foo {
 	width: $box-size-md;
 	height: $box-size-md;
@@ -134,7 +136,7 @@ $box-size-sm: 100px;
 	width: $box-size-md;
 	height: $box-size-md;
 	background: #fff;
-	@include border-radius(150px);
+	@include border-radius($box-size-md);
 	p {
 		text-align: center;
 		position: relative;
@@ -142,19 +144,11 @@ $box-size-sm: 100px;
 	}
 }
 
-//Only tablet
-@media (min-width: 480px) and (max-width: 992px) {
-	.foo {
-		background: red;
-		.bar {
-			background: blue;
-		}
-
-	}
-}
+//1. Mixin accepts string inputs (phone, tablet, desktop, lg-desktop, phone-tablet, phone-desktop, tablet-desktop, xs, sm, md, lg)
+//2. Mixin accepts number inputs for min and max (600, 900) or just a min (600)
 
 //Tablet only
-@include breakpoint(tablet-only) {
+@include breakpoint(phone) {
 	.foo {
 		background: red;
 		.bar {
@@ -162,3 +156,21 @@ $box-size-sm: 100px;
 		}
 	}
 }
+
+//NESTING!
+/*
+.foo {
+	background: blue; 
+	@include breakpoint(desktop) {
+		background: red;
+	}
+	.bar {
+		background: magenta;
+		@include breakpoint(tablet-only) {
+			background: yellow;
+		}
+	}
+}
+*/
+
+
