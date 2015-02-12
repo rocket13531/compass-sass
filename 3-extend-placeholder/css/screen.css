@@ -67,23 +67,78 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
+/*
+	EXAMPLE 1
+*/
+/*
+.hide-text {
+	text-indent: -9999px;
+	overflow: hidden;
+	p {
+		color: red;
+	}
+}
+*/
+/* line 43, ../sass/screen.scss */
+.foo {
+  text-indent: -9999px;
+  overflow: hidden;
+  z-index: 9999;
+}
+/* line 16, ../sass/screen.scss */
+.foo p {
+  color: red;
+}
+
+/* line 50, ../sass/screen.scss */
+.bar {
+  text-indent: -9999px;
+  overflow: hidden;
+  z-index: 9999;
+}
+/* line 16, ../sass/screen.scss */
+.bar p {
+  color: red;
+}
+
+/* line 57, ../sass/screen.scss */
+.baz {
+  text-indent: -9999px;
+  overflow: hidden;
+  z-index: 9999;
+}
+/* line 16, ../sass/screen.scss */
+.baz p {
+  color: red;
+}
+
+/*
+	EXAMPLE 2
+*/
 /*.module {
 	border: 1px solid black;
-	padding: 15px;	
+	padding: 15px;
 }
 
 .error {
 	color: red;
+	p {
+		text-decoration: underline;
+	}	
 }*/
-/* line 39, ../sass/screen.scss */
-.article, .sidebar, footer {
-  border: 1px solid black;
-  padding: 15px;
-  position: relative;
-}
+/*
+.foo {
+	
+	@include module;
+	@include error;
+	
+	//@extend %module;
+	//@extend %error;
 
-/* line 47, ../sass/screen.scss */
-div {
-  border: 1px solid black;
-  padding: 15px;
+	//@extend .module;
+	//@extend .error;
+
+	z-index: 9999;
+
 }
+*/

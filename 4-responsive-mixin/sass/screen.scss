@@ -1,0 +1,164 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "compass/css3";
+@import "compass/utilities";
+
+// Some variables
+$font-size-sm: 12px;
+$font-size-md: 16px;
+$font-size-lg: 24px;
+
+// Breakpoints
+
+$screen-xs: 480px !default;
+$screen-sm: 768px !default;
+$screen-md: 992px !default;
+$screen-lg: 1200px !default;
+
+// Box Size
+$box-size-md: 300px;
+$box-size-sm: 100px;
+
+// Mixin for handling breakpoints
+
+@mixin breakpoint($min: 0, $max: 0) {
+    $type: type-of($min);
+ 
+ 	//If $min type equals string, proceed
+    @if $type == string {
+        $class: $min;
+
+        //Phones and up
+        @if $class == phone {
+            @media (max-width: $screen-xs) { @content; }
+        }
+        //Tablets and up
+        @else if $class == tablet {
+            @media (min-width: $screen-sm) { @content; }
+        }
+        //Medium desktops and up
+        @else if $class == desktop {
+            @media (min-width: $screen-md) { @content; }
+        }
+        //Large desktops and up
+        @else if $class == lg-desktop {
+            @media (min-width: $screen-lg) { @content; }
+        }
+		//Only phones
+        @else if $class == phone-only {
+        	@media (max-width: $screen-xs) { @contnet; }
+        }
+        //Only tablets
+        @else if $class == tablet-only {
+        	@media (min-width: $screen-md) and (max-width: $screen-lg) { @contnet; }
+        }
+        //Only medium desktops
+        @else if $class == desktop-only {
+        	@media (min-width: $screen-md) and (max-width: $screen-lg) { @contnet; }
+        }
+        //Only large desktops
+        @else if $class == lg-desktop-only {
+        	@media (min-width: $screen-lg) { @contnet; }
+        }
+        //Tablets up through medium desktop
+        @else if $class == tablet-desktop {
+            @media (min-width: $screen-md) and (max-width: $screen-lg) { @content; }
+        }
+        //Extra small devices (phone)
+        @else if $class == xs {
+            @media (max-width: $screen-sm) { @content; }
+        }
+        //Small devices (tablet)
+        @else if $class == sm {
+            @media (min-width: $screen-sm) { @content; }
+        }
+        //Medium devices (medium desktop)
+        @else if $class == md {
+            @media (min-width: $screen-md) { @content; }
+        }
+        //Large devices (desktop)
+        @else if $class == lg {
+            @media (min-width: $screen-lg) { @content; }
+        }
+
+        @else {
+            @warn "Breakpoint mixin supports: phone, tablet, desktop, lg-desktop, phone-tablet, phone-desktop, tablet-desktop, xs, sm, md, lg";
+        }        
+    }
+    //else if the user has provided a number, proceed
+    @else if $type == number {
+        $query: "all" !default;
+        //If we have values for $min and $max, use both
+        @if $min != 0 and $max != 0 { 
+            $query: "(min-width: #{$min}) and (max-width: #{$max})"; 
+        }
+        //If we have a value for $min, but none for $max, use min
+        @else if $min != 0 and $max == 0 { 
+            $query: "(min-width: #{$min})"; 
+        }
+        //If we have a value for $max, but none for $min, use max
+        @else if $min == 0 and $max != 0 { 
+            $query: "(max-width: #{$max})"; 
+        }
+        //apply the query and output user supplied content
+        @media #{$query} { 
+            @content;
+        }        
+    }
+
+}
+
+.foo, .bar {color: #fff;}
+
+.foo {
+	width: $box-size-md;
+	height: $box-size-md;
+	background: #ccc;
+	position: relative;
+}
+
+.bar {
+	width: $box-size-sm;
+	height: $box-size-sm;
+	background: #000;
+	position: absolute;
+	top: ($box-size-md / 2) - ($box-size-sm / 2);
+	left: ($box-size-md / 2) - ($box-size-sm / 2);
+}
+
+.baz {
+	width: $box-size-md;
+	height: $box-size-md;
+	background: #fff;
+	@include border-radius(150px);
+	p {
+		text-align: center;
+		position: relative;
+		top: ($box-size-md / 2) - ($font-size-md / 2);
+	}
+}
+
+//Only tablet
+@media (min-width: 480px) and (max-width: 992px) {
+	.foo {
+		background: red;
+		.bar {
+			background: blue;
+		}
+
+	}
+}
+
+//Tablet only
+@include breakpoint(tablet-only) {
+	.foo {
+		background: red;
+		.bar {
+			background: blue;
+		}
+	}
+}

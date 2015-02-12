@@ -5,6 +5,67 @@
 
 @import "compass/reset";
 
+/*
+	EXAMPLE 1
+*/
+
+//Mixin 
+@mixin hide-text {
+	text-indent: -9999px;
+	overflow: hidden;
+	p {
+		color: red;
+	}
+}
+
+//Placeholder
+%hide-text {
+	text-indent: -9999px;
+	overflow: hidden;
+	p {
+		color: red;
+	}
+}
+
+//Extend
+/*
+.hide-text {
+	text-indent: -9999px;
+	overflow: hidden;
+	p {
+		color: red;
+	}
+}
+*/
+
+//Usage
+
+.foo {
+	@include hide-text;
+	//@extend %hide-text;
+	//@extend .hide-text;
+	z-index: 9999;
+}
+ 
+.bar {
+	@include hide-text;
+  	//@extend %hide-text;
+  	//@extend .hide-text;
+  	z-index: 9999;
+}
+ 
+.baz {
+	@include hide-text;
+	//@extend %hide-text;
+	//@extend .hide-text;
+	z-index: 9999;
+}
+
+
+/*
+	EXAMPLE 2
+*/
+
 //Mixin
 @mixin module {
 	border: 1px solid black;
@@ -13,39 +74,52 @@
 
 @mixin error {
 	color: red;
+	p {
+		text-decoration: underline;
+	}	
 }
 
 //Placeholder
 %module {
 	border: 1px solid black;
-	padding: 15px;	
+	padding: 15px;
+
 }
 
 %error {
 	color: red;
+	p {
+		text-decoration: underline;
+	}	
 }
 
 //Extend
 /*.module {
 	border: 1px solid black;
-	padding: 15px;	
+	padding: 15px;
 }
 
 .error {
 	color: red;
+	p {
+		text-decoration: underline;
+	}	
 }*/
 
-//Placeholder use
-.article, .sidebar, footer {
+//Usage
+/*
+.foo {
+	
 	@include module;
-	//@include error;
-	//@extend %module, %error;
-	//@extend .module, .error;
-	position: relative;
-}
-
-div {
-	@include module;
+	@include error;
+	
 	//@extend %module;
+	//@extend %error;
+
 	//@extend .module;
+	//@extend .error;
+
+	z-index: 9999;
+
 }
+*/
