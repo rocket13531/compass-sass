@@ -1,0 +1,13 @@
+/*
+Base files handle base global variables, mixins and styles for use through the app
+*/
+//utils
+@import "utils/utils";
+//resets
+@import "reset";
+//fonts
+@import "typography";
+//partials (buttons, icons, hrs, form fields, etc)
+@import "partials/partials";
+//forms
+@import "forms";

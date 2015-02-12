@@ -1,0 +1,173 @@
+//Mixin for handling rems
+
+@mixin rem($property, $values) {
+    $px : (); /* 3 */
+    $rem: (); /* 3 */
+
+    @each $value in $values { /* 4 */
+
+        @if $value == 0 or $value == auto { /* 5 */
+            $px : append($px , $value);
+            $rem: append($rem, $value);
+        }
+
+        @else {
+            $unit: unit($value);    /* 6 */
+            $val: parseInt($value); /* 6 */
+
+            @if $unit == "px" {  /* 7 */
+                $px : append($px,  $value);
+                $rem: append($rem, ($val / 10 + rem));
+            }
+
+            @if $unit == "rem" { /* 7 */
+                $px : append($px,  ($val * 10 + px));
+                $rem: append($rem, $value);
+            }
+        }
+    }
+
+    @if $px == $rem {     /* 8 */
+        #{$property}: $px;  /* 9 */
+    } @else {
+        #{$property}: $px;  /* 9 */
+        #{$property}: $rem; /* 9 */
+    }
+}
+
+// Mixin for handling breakpoints
+
+@mixin breakpoint($min: 0, $max: 0) {
+    $type: type-of($min);
+ 
+    @if $type == string {
+        $class: $min;
+
+        @if $class == phone {
+            @media (max-width: $screen-xs) { @content; }
+        }
+        @else if $class == desktop {
+            @media (min-width: $screen-md) { @content; }
+        }
+        @else if $class == phone-tablet {
+            @media (max-width: $screen-sm) { @content; }
+        }
+        @else if $class == desktop-tablet {
+            @media (min-width: $screen-sm) { @content; }
+        }
+        @else if $class == xs {
+            @media (max-width: $screen-xs) { @content; }
+        }
+
+        @else if $class == sm {
+            @media (min-width: $screen-sm) { @content; }
+        }
+
+        @else if $class == md {
+            @media (min-width: $screen-md) { @content; }
+        }
+
+        @else if $class == lg {
+            @media (min-width: $screen-lg) { @content; }
+        }
+
+        @else {
+            @warn "Breakpoint mixin supports: phone, desktop, xs, sm, md, lg";
+        }        
+    }
+
+    @else if $type == number {
+        $query: "all" !default;
+        @if $min != 0 and $max != 0 { 
+            $query: "(min-width: #{$min}) and (max-width: #{$max})"; 
+        }
+        @else if $min != 0 and $max == 0 { 
+            $query: "(min-width: #{$min})"; 
+        }
+        @else if $min == 0 and $max != 0 { 
+            $query: "(max-width: #{$max})"; 
+        }
+        @media #{$query} { 
+            @content;
+        }        
+    }
+
+}
+
+//Mixin for unique header types
+
+@mixin header($type, $fontsize: null, $fontcolor: null) {
+
+    text-transform: uppercase;
+
+    @if $fontsize {
+        @include rem(font-size, $fontsize);
+    }
+
+    @if $type == box {
+        display: inline-block;
+        padding: 3px 8px;
+        border-width: 2px;
+        border-style: solid;
+        @include border-radius(3px);
+
+        @if $fontsize {
+            @include rem(font-size, $fontsize);
+            @include rem(margin-bottom, $fontsize);
+        } @else {
+            @include rem(font-size, $font-size-md);
+            @include rem(margin-bottom, $font-size-md);
+        }
+        @if $fontcolor {
+            color: $fontcolor;
+            border-color: $fontcolor;
+        } @else {
+            font-color: inherit;
+            border-color: inherit;
+        }
+    }
+    @else if $type == list {
+        font-size: $font-size-md;
+        text-transform: uppercase;
+        font-weight: $bold;
+        @include rem(margin-bottom, $font-size-md);
+        @if $fontsize {
+            @include rem(font-size, $fontsize);
+            @include rem(margin-bottom, $fontsize);
+        } @else {
+            @include rem(font-size, $font-size-md);
+            @include rem(margin-bottom, $font-size-md);
+        }
+        @if $fontcolor {
+            color: $fontcolor;
+        } @else {
+            font-color: inherit;
+        }
+    }
+
+}
+
+@mixin valign-table() {
+    display: table;
+    height: 100%;
+}
+
+@mixin valign-table-cell() {
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+@mixin pull-left() {
+    float: left !important;
+}
+
+@mixin pull-right() {
+    float: right !important;
+}
+
+
+
+
+
+

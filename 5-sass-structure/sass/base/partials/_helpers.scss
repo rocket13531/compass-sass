@@ -1,0 +1,21 @@
+.valign-table {
+	@include valign-table();
+}
+
+.valign-table-cell {
+	@include valign-table-cell();
+}
+
+.inline-block {
+	display: inline-block;
+}
+
+.clickable {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.no-margpad {
+	padding: 0px;
+	margin: 0px;
+}

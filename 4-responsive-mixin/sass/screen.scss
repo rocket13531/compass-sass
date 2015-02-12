@@ -132,6 +132,7 @@ $box-size-sm: 100px;
 	left: ($box-size-md / 2) - ($box-size-sm / 2);
 }
 
+//4. Lets come back and take a look at the use of Compass border-radius mixin
 .baz {
 	width: $box-size-md;
 	height: $box-size-md;

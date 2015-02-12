@@ -1,0 +1,53 @@
+header.header {
+	height: $header-height;
+	padding: 0px;
+
+	& > .container-fluid {
+		padding-right: 0px;
+	}
+	
+	.header-item {
+		height: $header-height;
+		@include breakpoint (phone-tablet) {
+			&.nav-container {
+				height: 100%;
+			}
+		}
+	}
+
+	.header-icon {
+		padding: 0px 20px;
+		background: $off-black;
+		margin-right: 1px;
+		color: $nav-color;
+		cursor: pointer;
+		@include rem(font-size, $font-size-lg);
+		@include pull-right();
+	}
+
+	.hamburger-icon {
+		margin-right: 0px;
+		display: block;
+		@include breakpoint (desktop-tablet) {
+			display: none;
+		}
+	}
+
+	.search-icon {
+
+		@include breakpoint (desktop-tablet) {
+			margin-right: 0px;
+		}
+
+	}
+
+	.header-icon:first-child {
+		margin-right: 0px;
+	}
+
+	.logo-container {
+		@include pull-left();
+		a { color: $white; }
+	}
+
+}

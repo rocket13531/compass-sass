@@ -1,0 +1,63 @@
+//all base typography related styles
+html {
+	font-size: $base-root-font-size;
+	font-weight: $regular;
+}
+
+body {
+	@include rem(font-size, $base-font-size);
+	color: $black;
+}
+
+h1, h2, h3, h4, h5 {
+	margin: 0px;
+}
+
+h1 {
+	@include rem(font-size, $font-size-h1);
+	@include rem(margin-bottom, $font-size-h1);
+}
+
+h2 {
+	@include rem(font-size, $font-size-h2);
+	@include rem(margin-bottom, $font-size-h2);
+}
+
+h3 {
+	@include rem(font-size, $font-size-h3);
+	@include rem(margin-bottom, $font-size-h3);
+}
+
+h4 {
+	@include rem(font-size, $font-size-h4);
+	@include rem(margin-bottom, $font-size-h4);
+}
+
+h5 {
+	@include rem(font-size, $font-size-h5);
+	@include rem(margin-bottom, $font-size-h5);
+}
+
+p {
+
+}
+
+strong {
+	font-weight: $bold;
+}
+
+a {
+
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a:active {
+
+}
+
+a:visited {
+
+}

@@ -1,0 +1,69 @@
+// Breakpoints
+
+$screen-xs: 480px !default;
+$screen-sm: 768px !default;
+$screen-md: 992px !default;
+$screen-lg: 1200px !default;
+
+// Font weights
+$light: 100;
+$regular: 400;
+$bold: 600;
+
+// Font Sizes
+
+// Base Font
+$base-root-font-size: 62.5%;
+$base-font-family: sans-serif;
+$base-font-weight: $regular;
+$base-font-size: 12px;
+$base-line-height: 1.4;
+
+// Font Sizes
+$font-size-xxlg: 44px;
+$font-size-xlg: 36px;
+$font-size-lg: 24px;
+$font-size-md: 14px;
+$font-size-sm: 10px;
+$font-size-xs: 8px;
+
+// Headers
+$font-size-h1: 44px;
+$font-size-h2: 36px;
+$font-size-h3: 24px;
+$font-size-h4: 20px;
+$font-size-h5: 18px;
+$font-size-h6: 18px;
+
+// Paddings/Margins
+$offset-xlg: 50px;
+$offset-lg: 30px;
+$offset-md: 15px;
+$offset-sm: 10px;
+$offset-xs: 5px;
+
+// Fixed Font
+$fixed-font-family: monospace;
+$fixed-font-size: 85%;
+$fixed-line-height: $base-line-height;
+
+// Colors
+$black: #000;
+$off-black: #ccc;
+$white: #fff;
+$blue: #337ab7;
+
+// Color Usage
+$nav-color: $blue;
+
+//Main Container Margins
+$main-container-offset: $offset-md;
+
+//Header
+$header-height: 50px;
+$header-margin-bottom: 20px;
+
+//Sidenav
+$popout-width: 255px;
+$popout-speed: 0.3s;
+$popout-ease: ease-out;
